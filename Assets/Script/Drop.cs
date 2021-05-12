@@ -1,18 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Drop : MonoBehaviour
+public class Drop : MonoBehaviour, IDropHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public static bool PointerIsOnSlot = false;
+    public void OnDrop(PointerEventData eventData)
     {
-        
+        if (eventData.pointerDrag != null)
+        {
+            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            Debug.Log(GetComponent<RectTransform>().anchoredPosition);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PointerOnSlot()
     {
-        
+        PointerIsOnSlot = true; 
+    }
+
+    public void PointerOutSlot()
+    {
+        PointerIsOnSlot = false;
     }
 }

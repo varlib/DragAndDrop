@@ -11,16 +11,19 @@ public class Drag : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEnd
     RectTransform rectTransform;
     Canvas canvas;
     CanvasGroup canvasGroup;
+    Vector2 initialPos;
 
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
+        initialPos = rectTransform.anchoredPosition;
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
         canvasGroup.alpha = 0.5f;
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -31,6 +34,11 @@ public class Drag : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEnd
     public void OnEndDrag(PointerEventData eventData)
     {
         canvasGroup.alpha = 1f;
+        canvasGroup.blocksRaycasts = true;
+        if (!Drop.PointerIsOnSlot)
+        {
+            rectTransform.anchoredPosition = initialPos;
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
