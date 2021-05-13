@@ -10,8 +10,10 @@ public class Drop : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
-            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
-            Debug.Log(GetComponent<RectTransform>().anchoredPosition);
+            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition 
+                = GetComponent<RectTransform>().anchoredPosition;
+            //Debug.Log(eventData.pointerDrag.GetComponent<RectTransform>().name+" "+eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition);
+            //Debug.Log(GetComponent<RectTransform>().name + " " + GetComponent<RectTransform>().anchoredPosition);
         }
     }
 

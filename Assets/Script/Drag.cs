@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CanvasGroup))]
 
-public class Drag : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     RectTransform rectTransform;
     Canvas canvas;
@@ -39,10 +39,5 @@ public class Drag : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEnd
         {
             rectTransform.anchoredPosition = initialPos;
         }
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        
     }
 }
